@@ -24,6 +24,7 @@
 @property(nonatomic,readwrite) UITextView* inputTextView;
 @property(nonatomic,readwrite) UIButton* blockedMessageButton;
 @property(nonatomic,readwrite) BOOL isUserBlocked;
+@property(nonatomic,readwrite) BOOL isSend;
 
 -(void) handleSend;
 @end
@@ -35,6 +36,7 @@ static NSString * const reuseIdentifier = @"cellid";
     [super viewDidLoad];
     NSLog(@"Chat LOg COntroller");
     _keyBoardCount = 0;
+    _isSend = NO;
     _messagesRecieve = [[NSMutableArray alloc ] initWithObjects:@"I am willing to offer you help  on",@"YES",@"p", nil];
     _messagesSend = [[NSMutableArray alloc] initWithObjects: @"Hi",@"Hello",@"Go man",@"Let's Go",@"I are wanting", nil];
     _newarr = [[NSMutableArray alloc] init];
@@ -79,7 +81,7 @@ static NSString * const reuseIdentifier = @"cellid";
     self.originalWidth = self.inputTextView.frame.size.width;
     self.heightBeforeBecomingActive = self.inputTextView.frame.size.height;
     self.widthBeforeBecomingActive = self.inputTextView.frame.size.width;
-    
+    self.isSend = NO;
 }
 
 -(void)textViewDidBeginEditing:(UITextView *)textView{
@@ -182,26 +184,29 @@ self.containerViewHeightAnchor.constant = (self.containerViewHeightAnchor.consta
     cell.backgroundColor = [UIColor clearColor];
     NSString *message = _newarr[indexPath.item];
     cell.textView.text = message;
-    bool isSend = NO;
+    
     if (indexPath.item >= _messagesRecieve.count) {
-        isSend = YES;
+        self.isSend = YES;
     }
-    [self setUpCell:cell :isSend];
+    [self setUpCell:cell];
     return cell;
 }
 
--(void)setUpCell:(ChatMessageCell*)cell:(bool)isSend
+-(void)setUpCell:(ChatMessageCell*)cell
 {
-    if (!isSend) {
+    if (!self.isSend) {
         cell.bubbleViewLeftAnchor.active = YES;
         cell.bubbleViewRightAnchor.active = NO;
+        cell.bubbleHeightAnchor.constant = cell.bubbleHeightAnchor.constant - 20; // To get extra space for date label
         [cell addlabel]; // if message is from sender add label to cell
         cell.dateLabelwidthAnchor.constant = self.view.frame.size.width;
+        
     }
     else
     {
         cell.bubbleViewLeftAnchor.active = NO;
         cell.bubbleViewRightAnchor.active = YES;
+        
     }
     
 }
@@ -209,8 +214,12 @@ self.containerViewHeightAnchor.constant = (self.containerViewHeightAnchor.consta
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     NSString *text = _newarr[indexPath.item];
-    CGFloat height = [self estimateFrameForText:text].size.height + 40;
     
+    CGFloat height = [self estimateFrameForText:text].size.height + 40;
+    if (!self.isSend) {
+        height = height + 20;
+        
+    }
     return CGSizeMake(self.view.frame.size.width, height);
 }
 

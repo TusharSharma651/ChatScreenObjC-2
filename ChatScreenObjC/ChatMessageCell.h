@@ -13,6 +13,7 @@
  var bubbleViewLeftAnchor: NSLayoutConstraint?*/
 @interface ChatMessageCell : UICollectionViewCell
 @property(nonatomic,readwrite) NSLayoutConstraint* bubbleWidthAnchor;
+@property(nonatomic,readwrite) NSLayoutConstraint* bubbleHeightAnchor;
 @property(nonatomic,readwrite) NSLayoutConstraint* bubbleViewRightAnchor;
 @property(nonatomic,readwrite) NSLayoutConstraint* bubbleViewLeftAnchor;
 @property(nonatomic,readwrite) UIView* bubbleView;
