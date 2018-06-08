@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ChatLogController : UICollectionViewController
+@interface ChatLogController : UICollectionViewController<UICollectionViewDelegateFlowLayout>
 
 @end

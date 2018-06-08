@@ -232,6 +232,7 @@ class ChatLogController : UICollectionViewController, UITextViewDelegate, UIColl
         containerView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
         containerViewHeightAnchor =  containerView.heightAnchor.constraint(equalToConstant: 50)
         containerViewHeightAnchor?.isActive = true
+        
         let sendButton = UIButton(type: UIButtonType.system)
         sendButton.setTitle("Send", for: UIControlState.normal)
         sendButton.setTitleColor(UIColor.gray, for: UIControlState.normal)
@@ -243,6 +244,7 @@ class ChatLogController : UICollectionViewController, UITextViewDelegate, UIColl
         sendButton.widthAnchor.constraint(equalToConstant: 80).isActive = true
         sendButton.heightAnchor.constraint(equalTo: containerView.heightAnchor).isActive = true
         containerView.addSubview(inputTextView)
+        
         inputTextView.leftAnchor.constraint(equalTo: containerView.leftAnchor, constant : 10).isActive = true
         inputTextView.rightAnchor.constraint(equalTo: sendButton.leftAnchor, constant : 10).isActive = true
         inputTextView.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 10).isActive = true
@@ -250,6 +252,7 @@ class ChatLogController : UICollectionViewController, UITextViewDelegate, UIColl
         inputTextView.delegate = self
         originalHeight = inputTextView.frame.size.height
         originalWidth = inputTextView.frame.size.width
+        
         let separatorLineView = UIView()
         separatorLineView.backgroundColor = UIColor(red: 220/255, green: 220/255, blue: 220/255, alpha: 1)
         separatorLineView.translatesAutoresizingMaskIntoConstraints = false

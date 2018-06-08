@@ -6,16 +6,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatScreenObjC/ChatLogController.m"
-            timestampString = "548332815.521969"
+            timestampString = "548599218.951893"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "63"
-            endingLineNumber = "63"
-            landmarkName = "-didReceiveMemoryWarning"
+            startingLineNumber = "300"
+            endingLineNumber = "300"
+            landmarkName = "-unblockUser"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
