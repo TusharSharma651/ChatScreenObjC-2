@@ -53,7 +53,7 @@
     label.text = @"Today";
     label.font = [UIFont systemFontOfSize:15];
     label.textColor = [UIColor blackColor];
-    label.backgroundColor = [UIColor clearColor];
+    label.backgroundColor = [UIColor redColor];
     label.textAlignment = NSTextAlignmentCenter;
     label.translatesAutoresizingMaskIntoConstraints = false;
     return label;
@@ -62,10 +62,8 @@
     self.dateLabel = [self makeLabel];
     [self addSubview:self.dateLabel];
     [self.dateLabel.topAnchor constraintEqualToAnchor:self.bubbleView.bottomAnchor constant:0].active = YES;
-    self.dateLabelwidthAnchor =  [self.dateLabel.widthAnchor constraintEqualToConstant:200];
-    self.dateLabelwidthAnchor.active = YES;
-    self.dateLabelheightAnchor = [self.dateLabel.heightAnchor constraintEqualToConstant:20];
-    self.dateLabelheightAnchor.active = YES;
+    [self.dateLabel.heightAnchor constraintEqualToConstant:20].active = YES;
+    [self.dateLabel.widthAnchor constraintEqualToAnchor:self.widthAnchor].active = YES;
     
 }
 - (instancetype)initWithFrame:(CGRect)frame
@@ -88,15 +86,17 @@
         [self.bubbleView.topAnchor constraintEqualToAnchor:self.topAnchor].active = YES;
         _bubbleWidthAnchor = [self.bubbleView.widthAnchor constraintEqualToConstant:200];
         _bubbleWidthAnchor.active = YES;
-        _bubbleHeightAnchor =   [self.bubbleView.heightAnchor constraintEqualToAnchor:self.heightAnchor];
-        _bubbleHeightAnchor.active = YES;
+        self.bubbleBottomAnchorSend = [self.bubbleView.bottomAnchor constraintEqualToAnchor:self.bottomAnchor];
+        self.bubbleBottomAnchorSend.active = YES;
+        self.bubbleBottomAnchorRecieve = [self.bubbleView.bottomAnchor constraintEqualToAnchor:self.bottomAnchor constant:-20];
+        self.bubbleBottomAnchorSend.active = NO;
         
         [self.textView.leftAnchor constraintEqualToAnchor:self.bubbleView.leftAnchor constant:8].active = YES;
         [self.textView.topAnchor constraintEqualToAnchor:self.topAnchor].active = YES;
        // [self.textView.widthAnchor constraintEqualToConstant:200].active = NO;
         [self.textView.rightAnchor constraintEqualToAnchor:self.bubbleView.rightAnchor constant:-8].active = YES;
-        [self.textView.heightAnchor constraintEqualToAnchor:self.heightAnchor].active = YES;
-        [self.timeView.bottomAnchor constraintLessThanOrEqualToAnchor:self.bottomAnchor constant:-7].active = YES;
+        [self.textView.heightAnchor constraintEqualToAnchor:self.bubbleView.heightAnchor].active = YES;
+        [self.timeView.bottomAnchor constraintLessThanOrEqualToAnchor:self.bubbleView.bottomAnchor constant:-7].active = YES;
         [self.timeView.rightAnchor constraintLessThanOrEqualToAnchor:self.bubbleView.rightAnchor constant:-7].active = YES;
         [self.timeView.widthAnchor constraintEqualToConstant:50].active = YES;
         [self.timeView.heightAnchor constraintEqualToConstant:28].active = YES;

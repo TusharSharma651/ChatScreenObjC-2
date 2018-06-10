@@ -197,16 +197,16 @@ self.containerViewHeightAnchor.constant = (self.containerViewHeightAnchor.consta
     if (!self.isSend) {
         cell.bubbleViewLeftAnchor.active = YES;
         cell.bubbleViewRightAnchor.active = NO;
-        cell.bubbleHeightAnchor.constant = cell.bubbleHeightAnchor.constant - 20; // To get extra space for date label
-        [cell addlabel]; // if message is from sender add label to cell
-        cell.dateLabelwidthAnchor.constant = self.view.frame.size.width;
-        
+        cell.bubbleBottomAnchorRecieve.active = YES;
+        cell.bubbleBottomAnchorSend.active = NO;
+        [cell addlabel];
     }
     else
     {
         cell.bubbleViewLeftAnchor.active = NO;
         cell.bubbleViewRightAnchor.active = YES;
-        
+        cell.bubbleBottomAnchorRecieve.active = NO;
+        cell.bubbleBottomAnchorSend.active = YES;
     }
     
 }
@@ -216,7 +216,7 @@ self.containerViewHeightAnchor.constant = (self.containerViewHeightAnchor.consta
     NSString *text = _newarr[indexPath.item];
     
     CGFloat height = [self estimateFrameForText:text].size.height + 40;
-    if (!self.isSend) {
+    if (indexPath.item < _messagesRecieve.count) {
         height = height + 20;
         
     }
