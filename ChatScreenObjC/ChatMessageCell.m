@@ -16,7 +16,7 @@
     tv.text = @"SAMPLE TEXT";
     tv.font = [UIFont systemFontOfSize:20];
     tv.textColor = [UIColor colorWithRed:0.4 green:0.4 blue:0.4 alpha:1];
-    tv.backgroundColor = [UIColor blueColor];
+    tv.backgroundColor = [UIColor whiteColor];
     tv.layer.cornerRadius = 5;
     tv.layer.masksToBounds = YES;
     tv.textAlignment = NSTextAlignmentLeft;
@@ -29,7 +29,7 @@
 {
     UIView  *bubbleView = [[UIView alloc]init];
     bubbleView.translatesAutoresizingMaskIntoConstraints = NO;
-    bubbleView.backgroundColor = [UIColor greenColor];
+    bubbleView.backgroundColor = [UIColor whiteColor];
     bubbleView.layer.cornerRadius = 5;
     bubbleView.layer.masksToBounds = YES;
     return  bubbleView;
@@ -53,7 +53,7 @@
     label.text = @"Today";
     label.font = [UIFont systemFontOfSize:15];
     label.textColor = [UIColor blackColor];
-    label.backgroundColor = [UIColor redColor];
+    label.backgroundColor = [UIColor clearColor];
     label.textAlignment = NSTextAlignmentCenter;
     label.translatesAutoresizingMaskIntoConstraints = false;
     return label;

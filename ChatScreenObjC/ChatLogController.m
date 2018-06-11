@@ -34,6 +34,7 @@ static NSString * const reuseIdentifier = @"cellid";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+   // self.messages = [NSMutableArray alloc]initWithObjects:, nil
     NSLog(@"Chat LOg COntroller");
     _keyBoardCount = 0;
     _isSend = NO;
@@ -129,6 +130,24 @@ static NSString * const reuseIdentifier = @"cellid";
     }
     return  YES;
 }
+/*
+ print(inputTextView.frame.size.height)
+ var olderHeight = inputTextView.frame.size.height
+ if inputTextView.frame.size.height < 73.5
+ {
+ let fixedWidth = inputTextView.frame.size.width
+ inputTextView.sizeThatFits(CGSize(width: fixedWidth, height: CGFloat.greatestFiniteMagnitude))
+ let newSize = inputTextView.sizeThatFits(CGSize(width: fixedWidth, height: CGFloat.greatestFiniteMagnitude))
+ var newFrame = inputTextView.frame
+ newFrame.size = CGSize(width: max(newSize.width, fixedWidth), height: newSize.height)
+ inputTextView.frame = newFrame
+ if (newFrame.size.height - olderHeight) == 19
+ {
+ print("Height Changed")
+ 
+ containerViewHeightAnchor?.constant = (containerViewHeightAnchor?.constant)! + 19
+ }
+ }*/
 
 -(void)textViewDidChange:(UITextView *)textView
 {
