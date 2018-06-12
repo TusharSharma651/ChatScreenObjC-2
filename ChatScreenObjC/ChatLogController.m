@@ -161,7 +161,7 @@ static NSString * const reuseIdentifier = @"cellid";
         _inputTextView.frame = newFrame;
         CGFloat difference = newFrame.size.height - olderHeight;
         NSLog(@"Diff= %f",difference);
-        if ((olderHeight + difference) < 73.5) {
+        if ((olderHeight + difference) <= 73.5) {
             
         
 self.containerViewHeightAnchor.constant = (self.containerViewHeightAnchor.constant) + difference;
@@ -264,7 +264,7 @@ self.containerViewHeightAnchor.constant = (self.containerViewHeightAnchor.consta
                                               , _originalWidth, _originalHeight);
         self.containerViewHeightAnchor.constant = 50;
         
-        
+        self.heightBeforeBecomingActive = _originalHeight;
         
     }
     
