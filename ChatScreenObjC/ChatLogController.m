@@ -24,7 +24,7 @@
 @property(nonatomic,readwrite) UITextView* inputTextView;
 @property(nonatomic,readwrite) UIButton* blockedMessageButton;
 @property(nonatomic,readwrite) BOOL isUserBlocked;
-@property(nonatomic,readwrite) BOOL isSend;
+//@property(nonatomic,readwrite) BOOL isSend;
 
 -(void) handleSend;
 @end
@@ -37,7 +37,7 @@ static NSString * const reuseIdentifier = @"cellid";
    // self.messages = [NSMutableArray alloc]initWithObjects:, nil
     NSLog(@"Chat LOg COntroller");
     _keyBoardCount = 0;
-    _isSend = NO;
+    //_isSend = NO;
     _messagesRecieve = [[NSMutableArray alloc ] initWithObjects:@"I am willing to offer you help  on",@"YES",@"p", nil];
     _messagesSend = [[NSMutableArray alloc] initWithObjects: @"Hi",@"Hello",@"Go man",@"Let's Go",@"I are wanting", nil];
     _newarr = [[NSMutableArray alloc] init];
@@ -82,7 +82,7 @@ static NSString * const reuseIdentifier = @"cellid";
     self.originalWidth = self.inputTextView.frame.size.width;
     self.heightBeforeBecomingActive = self.inputTextView.frame.size.height;
     self.widthBeforeBecomingActive = self.inputTextView.frame.size.width;
-    self.isSend = NO;
+   // self.isSend = NO;
 }
 
 -(void)textViewDidBeginEditing:(UITextView *)textView{
@@ -205,15 +205,17 @@ self.containerViewHeightAnchor.constant = (self.containerViewHeightAnchor.consta
     cell.textView.text = message;
     
     if (indexPath.item >= _messagesRecieve.count) {
-        self.isSend = YES;
+        [self setUpCell:cell :true];
     }
-    [self setUpCell:cell];
+    else{
+        [self setUpCell:cell: false];
+    }
     return cell;
 }
 
--(void)setUpCell:(ChatMessageCell*)cell
+-(void)setUpCell:(ChatMessageCell*)cell:(Boolean)isSend
 {
-    if (!self.isSend) {
+    if (!isSend) {
         cell.bubbleViewLeftAnchor.active = YES;
         cell.bubbleViewRightAnchor.active = NO;
         cell.bubbleBottomAnchorRecieve.active = YES;
